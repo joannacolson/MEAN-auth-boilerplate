@@ -1,4 +1,4 @@
-var app = angular.module('RqwertyApp', ['ui.router', 'RqwertyCtrls']);
+var app = angular.module('App', ['ui.router', 'MyCtrls']);
 
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
         function($stateProvider, $urlRouterProvider, $locationProvider) {
@@ -7,18 +7,8 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             $stateProvider
                 .state('home', {
                     url: '/',
-                    templateUrl: 'app/views/rqwertys.html',
+                    templateUrl: 'app/views/home.html',
                     controller: 'HomeCtrl'
-                })
-                .state('newRqwerty', {
-                    url: '/rqwertys/new',
-                    templateUrl: 'app/views/newRqwerty.html',
-                    controller: 'NewCtrl'
-                })
-                .state('rqwertyShow', {
-                    url: '/rqwertys/:id',
-                    templateUrl: 'app/views/showRqwerty.html',
-                    controller: 'ShowCtrl'
                 })
                 .state('signup', {
                     url: '/signup',

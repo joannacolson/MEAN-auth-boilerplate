@@ -1,46 +1,11 @@
-angular.module('RqwertyCtrls', ['RqwertyServices'])
-    .controller('HomeCtrl', ['$scope', 'Rqwerty', function($scope, Rqwerty) {
-        $scope.rqwertys = [];
+angular.module('MyCtrls', ['MyServices'])
+    .controller('HomeCtrl', ['$scope', function($scope) {
+        // add controller logic
 
-        Rqwerty.query(function success(data) {
-            $scope.rqwertys = data;
-        }, function error(data) {
-            console.log(data);
-        });
-
-        $scope.deleteRqwerty = function(id, rqwertysIdx) {
-            Rqwerty.delete({ id: id }, function success(data) {
-                $scope.rqwertys.splice(rqwertysIdx, 1);
-            }, function error(data) {
-                console.log(data);
-            });
-        };
     }])
-    .controller('ShowCtrl', ['$scope', '$stateParams', 'Rqwerty', function($scope, $stateParams, Rqwerty) {
-        $scope.rqwerty = {};
 
-        Rqwerty.get({ id: $stateParams.id }, function success(data) {
-            $scope.rqwerty = data;
-        }, function error(data) {
-            console.log(data);
-        });
-    }])
-    .controller('NewCtrl', ['$scope', '$location', 'Rqwerty', function($scope, $location, Rqwerty) {
-        $scope.rqwerty = {
-            title: '',
-            description: '',
-            image: ''
-        };
-
-        $scope.createRqwerty = function() {
-            Rqwerty.save($scope.rqwerty, function success(data) {
-                $location.path('/');
-            }, function error(data) {
-                console.log(data);
-            });
-        };
-    }])
-    .controller('NavCtrl', ['$scope', 'Auth', function($scope, Auth) {
+// more controllers here
+.controller('NavCtrl', ['$scope', 'Auth', function($scope, Auth) {
         $scope.isLoggedIn = function() {
             return Auth.isLoggedIn();
         }

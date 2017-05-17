@@ -1,0 +1,5 @@
+1. Change the name of the database
+2. Add an .env file
+3. Make sure JWT_SECRET is an environment variable
+4. Add additional logic, controllers and so on
+5. Run NPM install

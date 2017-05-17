@@ -6,14 +6,14 @@ var path = require('path');
 // JSON web token dependencies, including a secret key to sign the token
 var expressJWT = require('express-jwt');
 var jwt = require('jsonwebtoken');
-var secret = process.env.JWT_SECRET;
+var secret = process.env.JWT_SECRET; // be sure to create .env file
 
 var app = express();
 
 // mongoose models and connection
 var mongoose = require('mongoose');
 var User = require('./models/user');
-mongoose.connect('mongodb://localhost/rqwertys');
+mongoose.connect('mongodb://localhost/authboilerplate'); //change this db name
 
 // decode POST data in JSON and URL encoded formats
 app.use(bodyParser.json());
@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('morgan')('dev'));
 
 // Replace the above routes with the following
-app.use('/api/rqwertys', expressJWT({ secret: secret }), require('./controllers/rqwertys'));
+// put other routes here...
 app.use('/api/users', expressJWT({ secret: secret }).unless({
     path: [{ url: '/api/users', methods: ['POST'] }]
 }), require('./controllers/users'));

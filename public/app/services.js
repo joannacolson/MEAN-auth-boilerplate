@@ -1,17 +1,15 @@
-angular.module('RqwertyServices', ['ngResource'])
-    .factory('Rqwerty', ['$resource', function($resource) {
-        return $resource('/api/rqwertys/:id');
-    }])
+angular.module('MyServices', ['ngResource'])
+    // factories go here
     .factory('Auth', ['$window', function($window) {
         return {
             saveToken: function(token) {
-                $window.localStorage['secretrqwertys-token'] = token;
+                $window.localStorage['secret-token'] = token;
             },
             getToken: function() {
-                return $window.localStorage['secretrqwertys-token'];
+                return $window.localStorage['secret-token'];
             },
             removeToken: function() {
-                $window.localStorage.removeItem('secretrqwertys-token');
+                $window.localStorage.removeItem('secret-token');
             },
             isLoggedIn: function() {
                 return this.getToken() ? true : false;
@@ -37,7 +35,8 @@ angular.module('RqwertyServices', ['ngResource'])
     }])
     .factory('AuthInterceptor', ['Auth', function(Auth) {
         return {
-            request: function(config) {
+            req
+uest: function(config) {
                 var token = Auth.getToken();
                 if (token) {
                     config.headers.Authorization = 'Bearer ' + token;
