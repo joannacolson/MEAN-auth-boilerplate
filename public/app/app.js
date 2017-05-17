@@ -1,42 +1,43 @@
-var app = angular.module('RecipeApp', ['ui.router', 'RecipeCtrls']);
+var app = angular.module('RqwertyApp', ['ui.router', 'RqwertyCtrls']);
 
-app.config(['$stateProvider', '$urlRouterProvider','$locationProvider',
-  function($stateProvider, $urlRouterProvider, $locationProvider) {
-    $urlRouterProvider.otherwise('/404');
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
+        function($stateProvider, $urlRouterProvider, $locationProvider) {
+            $urlRouterProvider.otherwise('/404');
 
-    $stateProvider
-    .state('home', {
-      url: '/',
-      templateUrl: 'app/views/recipes.html',
-      controller: 'HomeCtrl'
-    })
-    .state('newRecipe', {
-      url: '/recipes/new',
-      templateUrl: 'app/views/newRecipe.html',
-      controller: 'NewCtrl'
-    })
-    .state('recipeShow', {
-      url: '/recipes/:id',
-      templateUrl: 'app/views/showRecipe.html',
-      controller: 'ShowCtrl'
-    })
-    .state('signup', {
-      url: '/signup',
-      templateUrl: 'app/views/userSignup.html',
-      controller: 'SignupCtrl'
-    })
-    .state('login', {
-      url: '/login',
-      templateUrl: 'app/views/userLogin.html',
-      controller: 'LoginCtrl'
-    })
-    .state('404', {
-      url: '/404',
-      templateUrl: 'app/views/404.html'
-    });
+            $stateProvider
+                .state('home', {
+                    url: '/',
+                    templateUrl: 'app/views/rqwertys.html',
+                    controller: 'HomeCtrl'
+                })
+                .state('newRqwerty', {
+                    url: '/rqwertys/new',
+                    templateUrl: 'app/views/newRqwerty.html',
+                    controller: 'NewCtrl'
+                })
+                .state('rqwertyShow', {
+                    url: '/rqwertys/:id',
+                    templateUrl: 'app/views/showRqwerty.html',
+                    controller: 'ShowCtrl'
+                })
+                .state('signup', {
+                    url: '/signup',
+                    templateUrl: 'app/views/userSignup.html',
+                    controller: 'SignupCtrl'
+                })
+                .state('login', {
+                    url: '/login',
+                    templateUrl: 'app/views/userLogin.html',
+                    controller: 'LoginCtrl'
+                })
+                .state('404', {
+                    url: '/404',
+                    templateUrl: 'app/views/404.html'
+                });
 
-    $locationProvider.html5Mode(true);
-  }])
-  .config(['$httpProvider', function($httpProvider){
-    $httpProvider.interceptors.push('AuthInterceptor');
-  }]);
+            $locationProvider.html5Mode(true);
+        }
+    ])
+    .config(['$httpProvider', function($httpProvider) {
+        $httpProvider.interceptors.push('AuthInterceptor');
+    }]);

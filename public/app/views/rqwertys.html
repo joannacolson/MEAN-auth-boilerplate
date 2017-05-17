@@ -1,0 +1,11 @@
+<h1>Secret Rqwertys</h1>
+<a href="/rqwertys/new" class="btn btn-success">New Rqwerty</a>
+<div class="form-group">
+    <label for="search">Search</label>
+    <input type="text" class="form-control" id="search" ng-model="search">
+</div>
+<div class="well" ng-repeat="rqwerty in rqwertys | filter:{title:search} track by rqwerty._id">
+    <h1>{{rqwerty.title}}</h1>
+    <a ng-href="/rqwertys/{{rqwerty._id}}">Permalink</a>
+    <a ng-click="deleteRqwerty(rqwerty._id, $index)" class="btn btn-danger glyphicon glyphicon-trash pull-right"></a>
+</div>
